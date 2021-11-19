@@ -1,19 +1,13 @@
+# ---------------------------------------------------------
+# Enable Powerlevel10k
+# ---------------------------------------------------------
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export PATH=$PATH:$JAVA_HOME
-export AUTOPULL=/Users/ibuki/AndroidStudioProjects/
-export PATH=$PATH:$AUTOPULL
-export PATH="$HOME/Library/Python/2.7/bin:$PATH"
-
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/pkgconfig"
 
 # Add pyenv executable to PATH by adding
 # the following to ~/.profile:
@@ -26,7 +20,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/pkgconfig"
 
 # eval "$(pyenv init -)"
 
-#### Added by Zinit's installer
+# ---------------------------------------------------------
+# Zinit's installer
+# ---------------------------------------------------------
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -39,6 +35,11 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# ---------------------------------------------------------
+# plugin list
+# ---------------------------------------------------------
+
+
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -46,9 +47,11 @@ zinit light-mode for \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-bin-gem-node
 
-### End of Zinit's installer chunk
-#################################  HISTORY  #################################
-# history
+# ---------------------------------------------------------
+# basic
+# ---------------------------------------------------------
+
+# 履歴保存管理
 HISTFILE=$HOME/.zsh-history # 履歴を保存するファイル
 HISTSIZE=100000             # メモリ上に保存する履歴のサイズ
 SAVEHIST=1000000            # 上述のファイルに保存する履歴のサイズ
@@ -56,53 +59,61 @@ SAVEHIST=1000000            # 上述のファイルに保存する履歴のサ�
 # share .zshhistory
 setopt inc_append_history   # 実行時に履歴をファイルにに追加していく
 setopt share_history        # 履歴を他のシェルとリアルタイム共有する
-################################  COMPLEMENT  #################################
-# enable completion
+
+
+# ---------------------------------------------------------
+# completion
+# ---------------------------------------------------------
+
+# enable completion# コマンド補完
 autoload -Uz compinit && compinit
 
 # 補完候補をそのまま探す -> 小文字を大文字に変えて探す -> 大文字を小文字に変えて探す
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
-### 補完方法毎にグループ化する。
+# 補完方法毎にグループ化する。
 zstyle ':completion:*' format '%B%F{blue}%d%f%b'
 zstyle ':completion:*' group-name ''
 
-
-### 補完侯補をメニューから選択する。
-### select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
+# 補完侯補をメニューから選択する。
+# select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
 zstyle ':completion:*:default' menu select=2
-#################################  OTHERS  #################################
-# automatically change directory when dir name is typed
+
+
+# ---------------------------------------------------------
+# OTHERS
+# ---------------------------------------------------------
+
+# パスを直接入力してもcdする
 setopt auto_cd
-## 環境変数を補完
+# 環境変数を補完
 setopt AUTO_PARAM_KEYS
 # disable ctrl+s, ctrl+q
 setopt no_flow_control
-
-
-zinit load momo-lab/zsh-abbrev-alias # 略語を展開する
-## シンタックスハイライト
+# 略語を展開する
+zinit load momo-lab/zsh-abbrev-alias
+# シンタックスハイライト
 zinit light zsh-users/zsh-syntax-highlighting
-
 zinit light paulirish/git-open
-
 zinit ice as"program" from"gh-r" mv"bat* -> bat" pick"bat/bat"
 zinit light sharkdp/bat
-
 # 以下はただのエイリアス設定
 if builtin command -v bat > /dev/null; then
   alias cat="bat"
 fi
-
-zinit load zdharma/history-search-multi-word # Ctrl+r でコマンド履歴を検索
-## 履歴補完
+# Ctrl+r でコマンド履歴を検索
+zinit load zdharma/history-search-multi-word
+# 履歴補完
 zinit light zsh-users/zsh-autosuggestions
 bindkey '^j' autosuggest-accept
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=244"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-# alias
 alias ls="gls --color=auto"
+
+# ---------------------------------------------------------
+# peco
+# ---------------------------------------------------------
 
 ## コマンド履歴検索
 function peco-history-selection() {
@@ -130,7 +141,7 @@ function peco-cdr () {
   fi
 }
 zle -N peco-cdr
-bindkey '^E' peco-cdr
+bindkey '^D' peco-cdr
 
 ## カレントディレクトリ以下のディレクトリ検索・移動
 function find_cd() {
@@ -145,3 +156,44 @@ bindkey '^X' find_cd
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# ---------------------------------------------------------
+# eval
+# ---------------------------------------------------------
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+
+# ---------------------------------------------------------
+# alias
+# ---------------------------------------------------------
+alias ls="gls --color=auto"
+alias eman='env LANG=C man'
+alias man='env LANG=ja_JP.UTF-8 man'
+alias ssh='~/bin/ssh-change-profile.sh'
+
+
+# ---------------------------------------------------------
+# export
+# ---------------------------------------------------------
+
+# JDK
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export PATH=$PATH:$JAVA_HOME
+
+# 自作ShellScript
+export AUTOPULL=/Users/ibuki/AndroidStudioProjects/
+export PATH=$PATH:$AUTOPULL
+
+
+# export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+
+# homebrew
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/pkgconfig"
+export LANG=ja_JP.UTF-8
