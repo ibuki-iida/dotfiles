@@ -162,7 +162,8 @@ bindkey '^X' find_cd
 # ---------------------------------------------------------
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
+#PATH="$HOME/.anyenv/bin:$PATH"
+#eval "$(nodenv init - --no-rehash)"
 
 
 # ---------------------------------------------------------
@@ -186,6 +187,8 @@ export PATH=$PATH:$JAVA_HOME
 export AUTOPULL=/Users/ibuki/AndroidStudioProjects/
 export PATH=$PATH:$AUTOPULL
 
+export MYSHELL=/Users/ibuki/mySH/
+export PATH=$PATH:$MYSHELL
 
 # export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 
@@ -197,6 +200,9 @@ export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/pkgconfig"
 export LANG=ja_JP.UTF-8
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -213,3 +219,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+
+. /opt/homebrew/opt/asdf/asdf.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
