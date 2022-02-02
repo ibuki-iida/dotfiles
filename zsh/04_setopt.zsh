@@ -1,15 +1,10 @@
 # ==============================#
-#          settings             #
+#          setopt               #
 # ==============================#
-
-# enable completion# コマンド補完
-autoload -Uz compinit && compinit
 
 # ---------------------------------------------------------
 # setopt
 # ---------------------------------------------------------
-setopt inc_append_history		# 実行時に履歴をファイルにに追加していく
-setopt share_history			# 履歴を他のシェルとリアルタイム共有する
 setopt auto_cd					# パスを直接入力してもcdする
 setopt AUTO_PARAM_KEYS			# 環境変数を補完
 setopt no_flow_control			# disable ctrl+s, ctrl+q

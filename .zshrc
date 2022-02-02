@@ -37,17 +37,15 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 
-SCRIPT_DIR=$HOME/dotfiles
-source $SCRIPT_DIR/zsh/plugins.zsh
-#source $SCRIPT_DIR/zsh/config.zsh
-source $SCRIPT_DIR/zsh/settings.zsh
-source $SCRIPT_DIR/zsh/exports.zsh
-source $SCRIPT_DIR/zsh/alias.zsh
-source $SCRIPT_DIR/zsh/function.zsh
-source $SCRIPT_DIR/zsh/p10k.zsh
 
 
+source $SCRIPT_DIR/zsh/01_config.zsh
+source $SCRIPT_DIR/zsh/02_aliases.zsh
+source $SCRIPT_DIR/zsh/03_plugins.zsh
+source $SCRIPT_DIR/zsh/04_setopt.zsh
+source $SCRIPT_DIR/zsh/05_function.zsh
 
+# source $SCRIPT_DIR/zsh/p10k.zsh
 
 
 # ---------------------------------------------------------
@@ -57,10 +55,6 @@ source $SCRIPT_DIR/zsh/p10k.zsh
 eval "$(/opt/homebrew/bin/brew shellenv)"
 #PATH="$HOME/.anyenv/bin:$PATH"
 #eval "$(nodenv init - --no-rehash)"
-
-
-
-
 
 
 # >>> conda initialize >>>
