@@ -38,7 +38,7 @@ alias gro='_git_remote_open'                                      # remoteに設
 alias gs='_searchByGoogle'                                         #
 # alias tt='_tmux_commands'                                         # tmuxコマンド集
 alias opa='_open_launched_app'                                    # 起動中のアプリを表示、選択して起動する
-alias fi='find ./ -name'                                          #
+alias fin='find ./ -name'                                          #
 
 # ディレクトリ関連
 alias cdd='fzf-cdr'                                               # fzf版cdd ファイル検索

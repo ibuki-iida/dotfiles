@@ -72,7 +72,7 @@
 # peco
 # ---------------------------------------------------------
 ## コマンド履歴検索
-peco-history-selection() {
+function peco-history-selection() {
   BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
   zle reset-prompt
@@ -91,26 +91,27 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
   zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
 fi
 
-# function peco-cdr () {
-#   local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
-#   if [ -n "$selected_dir" ]; then
-#     BUFFER="cd ${selected_dir}"
-#       zle accept-line
-#   fi
-# }
-# zle -N peco-cdr
-# bindkey '^E' peco-cdr
-#
-# ## カレントディレクトリ以下のディレクトリ検索・移動
-# function find_cd() {
-#   local selected_dir=$(find . -type d | peco)
-#   if [ -n "$selected_dir" ]; then
-#     BUFFER="cd ${selected_dir}"
-#     zle accept-line
-#   fi
-# }
-# zle -N find_cd
-# bindkey '^X' find_cd
+function peco-cdr () {
+  local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+      zle accept-line
+   fi;
+}
+zle -N peco-cdr
+bindkey '^E' peco-cdr
+
+## カレントディレクトリ以下のディレクトリ検索・移動
+function find_cd() {
+  local selected_dir=$(find . -type d | peco)
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+}
+
+zle -N find_cd
+bindkey '^X' find_cd
 
 # 自作Snippet
 #function show_snippets() {
@@ -130,69 +131,69 @@ function fzf-cdr() {
     fi
 }
 
-# function _easy_change_dir() {
-#   local findOptions="-maxdepth 3 -type d -not -path './.git/*'"
-#   local targetDir=$(eval "find . $findOptions" | fzf --bind "tab:reload(find {} $findOptions),ctrl-p:reload(find `dirname {}` $findOptions)" --preview 'tree -L 3 {}')
-#   [ -z "$targetDir" ] && return
-#   cd $targetDir
-# }
+function _easy_change_dir() {
+  local findOptions="-maxdepth 3 -type d -not -path './.git/*'"
+  local targetDir=$(eval "find . $findOptions" | fzf --bind "tab:reload(find {} $findOptions),ctrl-p:reload(find `dirname {}` $findOptions)" --preview 'tree -L 3 {}')
+  [ -z "$targetDir" ] && return
+  cd $targetDir
+}
 
 # カレントディレクトリ以下をプレビューし選択して開く
-# function _look() {
-#   if [ "$1" = "-a" ]; then
-#     local find_result=$(find . -type f -o -type l)
-#   else
-#     local find_result=$(find . -maxdepth 1 -type f -o -type l)
-#   fi
-#   local target_files=($(echo "$find_result" \
-#     | sed 's/\.\///g' \
-#     | grep -v -e '.jpg' -e '.gif' -e '.png' -e '.jpeg' \
-#     | sort -r \
-#     | fzf-tmux -p80% --select-1 --prompt 'vim ' --preview 'bat --color always {}' --preview-window=right:70%
-#   ))
-#   [ "$target_files" = "" ] && return
-#   vim -p ${target_files[@]}
-# }
-#
-# function _look_all() {
-#   local target_files=($(find . -type f -not -path "./node_modules/*" \
-#     | sed 's/\.\///g' \
-#     | grep -v -e '.jpg' -e '.gif' -e '.png' -e '.jpeg' \
-#     | sort -r \
-#     | fzf-tmux -p80% --select-1 --prompt 'vim ' --preview 'bat --color always {}' --preview-window=right:70%
-#   ))
-#   [ "$target_files" = "" ] && return
-#   vim -p ${target_files[@]}
-# }
-#
-# # remoteに設定されているURLを開く
-# # alias gro='_git_remote_open'
-# function _git_remote_open() {
-#   local remote=$(git remote show | fzf --select-1)
-#   local url=$(git remote get-url $remote)
-#   if [ "$url" = '' ]; then; return; fi
-#   if ! echo $url | grep 'http' >/dev/null; then
-#     # Bitbucketの場合
-#     url=$(echo $url | sed 's/git@bitbucket.org:/https:\/\/bitbucket\.org\//g')
-#     # GithubでSSHの場合
-#     url=$(echo $url | grep -oP "(?<=@).*(?=.git)" | tr ':' '/' | sed 's/^/https:\/\//g')
-#   fi
-#   open $url
-# }
-#
-# # 現在のブランチをoriginにpushする
-# # alias po='_git_push_fzf'
-# function _git_push_fzf() {
-#   local remote=`git remote | fzf --select-1`
-#   git push $1 ${remote} $(git branch | grep "*" | sed -e "s/^\*\s*//g")
-# }
-#
-# # alias goo='_searchByGoogle'
-# function _searchByGoogle() {
-#     # 第一引数がない場合はpbpasteの中身を検索単語とする
-#     [ -z "$1" ] && searchWord=`pbpaste` || searchWord=$1
-#     open https://www.google.co.jp/search\?q\=$searchWord
-# }
+function _look() {
+  if [ "$1" = "-a" ]; then
+    local find_result=$(find . -type f -o -type l)
+  else
+    local find_result=$(find . -maxdepth 1 -type f -o -type l)
+  fi
+  local target_files=($(echo "$find_result" \
+    | sed 's/\.\///g' \
+    | grep -v -e '.jpg' -e '.gif' -e '.png' -e '.jpeg' \
+    | sort -r \
+    | fzf-tmux -p80% --select-1 --prompt 'vim ' --preview 'bat --color always {}' --preview-window=right:70%
+  ))
+  [ "$target_files" = "" ] && return
+  vim -p ${target_files[@]}
+}
+
+function _look_all() {
+  local target_files=($(find . -type f -not -path "./node_modules/*" \
+    | sed 's/\.\///g' \
+    | grep -v -e '.jpg' -e '.gif' -e '.png' -e '.jpeg' \
+    | sort -r \
+    | fzf-tmux -p80% --select-1 --prompt 'vim ' --preview 'bat --color always {}' --preview-window=right:70%
+  ))
+  [ "$target_files" = "" ] && return
+  vim -p ${target_files[@]}
+}
+
+# remoteに設定されているURLを開く
+# alias gro='_git_remote_open'
+function _git_remote_open() {
+  local remote=$(git remote show | fzf --select-1)
+  local url=$(git remote get-url $remote)
+  if [ "$url" = '' ]; then; return; fi
+  if ! echo $url | grep 'http' >/dev/null; then
+    # Bitbucketの場合
+    url=$(echo $url | sed 's/git@bitbucket.org:/https:\/\/bitbucket\.org\//g')
+    # GithubでSSHの場合
+    url=$(echo $url | grep -oP "(?<=@).*(?=.git)" | tr ':' '/' | sed 's/^/https:\/\//g')
+  fi
+  open $url
+}
+
+# 現在のブランチをoriginにpushする
+# alias po='_git_push_fzf'
+function _git_push_fzf() {
+  local remote=`git remote | fzf --select-1`
+  git push $1 ${remote} $(git branch | grep "*" | sed -e "s/^\*\s*//g")
+}
+
+# alias goo='_searchByGoogle'
+function _searchByGoogle() {
+    # 第一引数がない場合はpbpasteの中身を検索単語とする
+    [ -z "$1" ] && searchWord=`pbpaste` || searchWord=$1
+    open https://www.google.co.jp/search\?q\=$searchWord
+}
 
 # tmuxコマンド集
 # alias tt='_tmux_commands'
@@ -248,14 +249,14 @@ function fzf-cdr() {
 
 # 起動中のアプリを表示、選択して起動する
 # alias oaa='_open_launched_app'
-# function _open_launched_app() {
-#   local app=$(ps aux | awk -F '/' '{print "/"$2"/"$3}' | grep Applications | sort -u | sed 's/\/Applications\///g' | fzf )
-#   test -z "$app" && return
-#   open "/Applications/$app"
-# }
+function _open_launched_app() {
+  local app=$(ps aux | awk -F '/' '{print "/"$2"/"$3}' | grep Applications | sort -u | sed 's/\/Applications\///g' | fzf )
+  test -z "$app" && return
+  open "/Applications/$app"
+}
 
 # 現在開いているfinderのディレクトリに移動
 # alias cdf='_cd_opend_finder'
-# function _cd_opend_finder() {
-#   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
-# }
+function _cd_opend_finder() {
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}

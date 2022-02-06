@@ -1,4 +1,6 @@
-### 修正後 ###
+# ---------------------------------------------------------
+# Zinit's installer
+# ---------------------------------------------------------
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
@@ -52,6 +54,7 @@ zinit load junegunn/fzf-bin
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for zsh-users/zsh-completions
 
 zplugin ice depth=1; zplugin light romkatv/powerlevel10k
+### End of Zinit's installer chunk
 # ---------------------------------------------------------
 # Enable Powerlevel10k
 # ---------------------------------------------------------
@@ -80,28 +83,16 @@ zplugin ice depth=1; zplugin light romkatv/powerlevel10k
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
-# ---------------------------------------------------------
-# Zinit's installer
-# ---------------------------------------------------------
-# if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-#     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-#     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-#     command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-#         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-#         print -P "%F{160}▓▒░ The clone has failed.%f%b"
-# fi
-#
-# source "$HOME/.zinit/bin/zinit.zsh"
-# autoload -Uz _zinit
-# (( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
+
+
 
 SCRIPT_DIR=$HOME/dotfiles
 source $SCRIPT_DIR/zsh/01_config.zsh
 source $SCRIPT_DIR/zsh/02_aliases.zsh
 # source $SCRIPT_DIR/zsh/03_plugins.zsh
-# source $SCRIPT_DIR/zsh/04_setopt.zsh
-# source $SCRIPT_DIR/zsh/05_function.zsh
+source $SCRIPT_DIR/zsh/04_setopt.zsh
+source $SCRIPT_DIR/zsh/05_function.zsh
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
+
 source $SCRIPT_DIR/zsh/p10k.zsh
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
