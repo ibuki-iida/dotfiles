@@ -36,23 +36,23 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+export LANG=ja_JP.UTF-8
 
-
-
+SCRIPT_DIR=$HOME/dotfiles
 source $SCRIPT_DIR/zsh/01_config.zsh
 source $SCRIPT_DIR/zsh/02_aliases.zsh
-source $SCRIPT_DIR/zsh/03_plugins.zsh
+# source $SCRIPT_DIR/zsh/03_plugins.zsh
 source $SCRIPT_DIR/zsh/04_setopt.zsh
 source $SCRIPT_DIR/zsh/05_function.zsh
-
-# source $SCRIPT_DIR/zsh/p10k.zsh
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
+source $SCRIPT_DIR/zsh/.p10k.zsh
 
 
 # ---------------------------------------------------------
 # eval
 # ---------------------------------------------------------
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#eval "$(/opt/homebrew/bin/brew shellenv)"
 #PATH="$HOME/.anyenv/bin:$PATH"
 #eval "$(nodenv init - --no-rehash)"
 
@@ -71,13 +71,10 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-
-
-. /opt/homebrew/opt/asdf/asdf.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# . /opt/homebrew/opt/asdf/asdf.sh
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
