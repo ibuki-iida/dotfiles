@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 pairedDevices() {
-osascript << EOF
+osascript <<-EOF
     use framework "IOBluetooth"
     use scripting additions
     set _results to {}
@@ -24,7 +24,7 @@ EOF
 
 connect() {
 local address=$1
-osascript << EOF
+osascript <<-EOF
     use framework "IOBluetooth"
     use scripting additions
     repeat with device in (current application's IOBluetoothDevice's pairedDevices() as list)
