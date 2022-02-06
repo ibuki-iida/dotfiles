@@ -1,0 +1,104 @@
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.up rebase
+git config --global alias.ci commit
+
+5. git new
+new = "!f(){ git ch -b feature/${1};};f"
+弊社では、gitでfeatureブランチ（以下略）。なので、featureブランチを作るのが、まず何よりはじめにやることです。このエイリアスでは git new hogehogeと打つと feature/hogehoge ブランチを作成して移動してくれます。
+
+git config --global --edit
+
+sa = !git sl | xargs git stash apply
+    # ↑でプレビューした後にdrop
+    sd = !git sl | xargs git stash drop
+    
+git see（hub see）
+see = browse
+
+hub browseでGitHubの該当するリポジトリのページが見られます
+
+save = stash save -u
+これは git save "stashのメッセージ"とする事で未追跡（untracked）のファイルも一緒にstashしつつ、stashのメッセージを付けられます。
+
+aliases = !git config --get-regexp alias | grep -v aliases | sed 's/^alias.//g' | sed 's/ / = /1' | sort
+aliases = !git config --get-regexp alias | sed 's/^alias.//g' | sed 's/ / = /1'
+$ git aliases
+st = status -sb
+ch = checkout
+br = branch
+bra = branch -a -vvv
+ls = ls-files
+cm = commit -m
+sh = stash
+cp = cherry-pick
+l = log --graph --date=short --pretty="format:%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%x09%s %C(red)%d%Creset"
+la = log --oneline --decorate --graph --branches --tags --remotes
+see = browse
+save = stash save -u
+pr = !hub browse -- pull/$(git symbolic-ref --short HEAD)
+list = !hub browse -- pulls/$(git config user.name)
+aliases = !git config --get-regexp alias |  sed 's/^alias.//g' | sed 's/ / = /1'
+
+
+
+
+
+
+# git
+alias g="git"
+alias gl="git l"
+alias gla="git la"
+alias gg="git la"
+alias ge="gg --color | emojify | less -r"
+alias push="git push origin HEAD"
+alias pull="git fetch -p && git pull"
+# indexにaddしていないファイルを全て元に戻す
+alias wipe="git checkout . && git clean -fd"
+ 
+# tig
+alias t="tig"
+alias ta="tig --all"
+
+
+-------------------------------------------------------------------------------------------
+コラム：bashとzshの共存と共有設定ファイルについて
+zshへ移行するにしても、しばらくはbashも使用しながら試用的に移行したい場合もあるでしょう。そんな時起動ファイルの環境変数を変更するたびにbash/zsh両方のファイルを変更するのは不効率です。
+
+おすすめはファイルを3つに分けることです。1つはbash専用の.bash_profile、もう一つはzsh専用の.zshrc、そして両方の共通ファイルとして適当な名前でファイル、例えば.profile_commonを作ります。
+
+そして.bash_profile、.zshrcそれぞれに以下の様に.profile_commonがあればそれをロードするコードとそれぞれのシェル固有の設定を入れておくわけです。
+
+.bash_profileの例
+#!/bin/bash
+
+COMMON_PROFILE=$HOME/.profile_common
+
+if [ -e $COMMON_PROFILE ]
+then source $COMMON_PROFILE
+fi
+
+shopt -s extglob
+export PS1="\n^[[36m(\!)[\t^H^H^H]{\$?}^[[33m\h:^[[31m\w^[[0m\n$ "
+
+#bash固有の設定・・・
+.zshrcの例
+#!/bin/zsh
+
+COMMON_PROFILE=$HOME/.profile_common
+
+if [ -e $COMMON_PROFILE ]
+then source $COMMON_PROFILE
+fi
+
+#zsh固有の設定・・・
+.profile_common(bash/zsh共通設定)の例
+export PATH=$HOME/.bin:$PATH
+export CDPATH=$HOME:$CDPATH
+
+export EDITOR="vim"
+
+alias ls="ls -F"
+
+#bash/zsh共通の設定・・・
