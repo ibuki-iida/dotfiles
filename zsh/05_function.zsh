@@ -260,3 +260,58 @@ function _open_launched_app() {
 function _cd_opend_finder() {
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
+
+
+
+# 記事メモコマンド
+function _writeArticle() {
+    # 下書き記事の保存場所
+    local ARTICLE_DIR=/Users/ibuki/memos
+    local article=$(ls ${ARTICLE_DIR}/*.md | xargs basename | fzf)
+
+    # 何も選択しなかった場合は終了
+    if [ -z "$article" ]; then
+        return 0
+    fi
+
+    if [ "$article" = "00000000.md" ]; then
+        echo "タイトルを入力してくだい"
+        read title
+        today=$(date '+%Y_%m_%d_')
+        vim ${ARTICLE_DIR}/${today}${title}.md
+    else
+        vim ${ARTICLE_DIR}/${article}
+    fi
+}
+# 投稿した記事を別ディレクトリに移動
+function _movePostedArticles() {
+    # 投稿完了を意味する目印
+    local POSTED_MARK='完'
+    # 下書き記事の保存場所
+    local ARTICLE_DIR=/Users/ibuki/memos
+
+    # 投稿が完了した記事を保存するディレクトリ
+    local POSTED_DIR=$ARTICLE_DIR/posted
+
+    for file in `ls $ARTICLE_DIR`; do
+        tail -n 1 ${ARTICLE_DIR}/${file} | grep $POSTED_MARK > /dev/null
+        # 投稿が完了したファイルを別ディレクトリに移す
+        if [ $? -eq 0 ]; then
+            mv ${ARTICLE_DIR}/${file} $POSTED_DIR/
+            printf "\e[33m${file} is moved!\e[m\n"
+        fi
+    done
+}
+
+# fgを使わずctrl+zで行ったり来たりする
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

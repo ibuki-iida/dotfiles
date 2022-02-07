@@ -44,6 +44,21 @@ unset __conda_setup
 # <<< conda initialize <<<
 # . /opt/homebrew/opt/asdf/asdf.sh
 #################################  EXPORT  #################################
+# homebrew
+typeset -U path PATH
+path=(
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /Library/Apple/usr/bin
+)
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
 # JDK
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-13.jdk/Contents/Home
 # export PATH=$PATH:/Library/Java/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin
@@ -65,21 +80,6 @@ export LANG=ja_JP.UTF-8
 
 # export PATH="$HOME/Library/Python/2.7/bin:$PATH"
 
-# homebrew
-typeset -U path PATH
-path=(
-  /opt/homebrew/bin(N-/)
-  /opt/homebrew/sbin(N-/)
-  /usr/bin
-  /usr/sbin
-  /bin
-  /sbin
-  /usr/local/bin(N-/)
-  /usr/local/sbin(N-/)
-  /Library/Apple/usr/bin
-)
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
 # eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
