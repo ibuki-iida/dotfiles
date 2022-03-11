@@ -1,0 +1,33 @@
+Usage: nicovideo-dl [options] video_url
+
+Options:
+  -h, --help            print this help text and exit
+  -v, --version         print program version and exit
+  -u USERNAME, --username=USERNAME
+                        account username
+  -p PASSWORD, --password=PASSWORD
+                        account password
+  -o FILE, --output=FILE
+                        output video file name
+  -q, --quiet           activates quiet mode
+  -s, --simulate        do not download video
+  -t, --title           use title in file name
+  -l, --literal         use literal title in file name
+  -n, --netrc           use .netrc authentication data
+  -g, --get-url         print final video URL only
+  -2, --title-too       used with -g, print title too
+  -c, --get-comment     download comment
+  -x, --raw-comment     save comment in raw xml
+  --comment-output=FILE
+  
+  -h, 			ヘルプ
+  -u USERNAME	アカウントのユーザー名
+  -p PASSWORD	アカウントのパスワード
+  -o FILE		出力映像のファイル名
+  -t			ファイル名にタイトルを使用します。
+  -l, --literal ファイル名にリテラルのタイトルを使用します。
+  -n, --netrc .netrc 認証データを使用します。
+  -g, --get-url 最終的なビデオの URL のみを表示します。
+  -c, --get-comment コメントをダウンロードする
+  -x, --raw-comment コメントを生のxmlで保存します。
+  --コメントの出力=FILE

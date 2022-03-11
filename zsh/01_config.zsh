@@ -65,6 +65,10 @@ export PATH=/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH
+export GO111MODULE=on
+
 # 自作ShellScript
 export AUTOPULL=/Users/ibuki/AndroidStudioProjects/
 export PATH=$PATH:$AUTOPULL

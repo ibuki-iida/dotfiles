@@ -1,0 +1,48 @@
+TalkingAlertsSpeakPhraseFlag
+defaults write -g TalkingAlertsSpeakPhraseFlag -bool true
+defaults delete -g TimeAnnouncementsEnabled -bool true
+
+defaults -currentHost write com.apple.coreservices.useractivityd ActivityAdvertisingAllowed -bool false
+
+defaults read com.apple.speech.synthesis.general.prefs TimeAnnouncementPrefs TimeAnnouncementsEnabled
+defaults write com.apple.speech.synthesis.general.prefs TimeAnnouncementPrefs -dict TimeAnnouncementsEnabled -bool YES
+
+defaults write com.apple.speech.synthesis.general.prefs TimeAnnouncementPrefs -dict-add TimeAnnouncementsEnabled -bool NO
+defaults write com.apple.speech.synthesis.general.prefs TimeAnnouncementPrefs -dict-add TimeAnnouncementsEnabled -bool YES
+
+defaults read com.apple.speech.synthesis.general.prefs
+{
+    TalkingAlertsPhraseSelectionStrategy = 0;
+    TalkingAlertsSelectedPhraseIndex = 0;
+    TimeAnnouncementPrefs =     {
+        TimeAnnouncementsEnabled = 0;
+        TimeAnnouncementsIntervalIdentifier = EveryQuarterHourInterval;
+        TimeAnnouncementsPhraseIdentifier = ShortTime;
+        TimeAnnouncementsVoiceSettings =         {
+            CustomRelativeRate = "0.78";
+            CustomVolume = "0.322296";
+        };
+    };
+}
+
+defaults read com.apple.speech.synthesis.general.prefs TimeAnnouncementPrefs TimeAnnouncementsEnabled
+{
+    TimeAnnouncementsEnabled = 1;
+    TimeAnnouncementsIntervalIdentifier = EveryQuarterHourInterval;
+    TimeAnnouncementsPhraseIdentifier = ShortTime;
+    TimeAnnouncementsVoiceSettings =     {
+        CustomRelativeRate = "0.78";
+        CustomVolume = "0.322296";
+    };
+}
+
+defaults read com.apple.speech.synthesis.general.prefs TimeAnnouncementPrefs
+{
+    TimeAnnouncementsEnabled = 0;
+    TimeAnnouncementsIntervalIdentifier = EveryQuarterHourInterval;
+    TimeAnnouncementsPhraseIdentifier = ShortTime;
+    TimeAnnouncementsVoiceSettings =     {
+        CustomRelativeRate = "0.78";
+        CustomVolume = "0.322296";
+    };
+}

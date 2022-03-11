@@ -13,8 +13,11 @@ alias nc='npm ci'                                                 # pj依存
 alias ndev='npm run dev'                                          # pj依存
 alias dot='cd ~/dotfiles'                                         # dotfilesに移動
 alias dotz='cd ~/dotfiles/zsh'                                    # dotfiles/zshに移動
-alias dota='cat ~/dotfiles/zsh/02_aliases.zsh'                    # aliasを表示
-alias dotopen='open -a IntelliJ IDEA Ultimate" ~/dotfiles/zsh/'   # open zsh
+alias alist='cat ~/dotfiles/zsh/02_aliases.zsh'                    # aliasを表示
+alias funlist='cat ~/dotfiles/zsh/04_function.zsh'                    # funcを表示
+alias myfunlist='cat ~/dotfiles/zsh/05_Myfunction.zsh'                    # Myfuncを表示
+alias alivi='vi  ~/dotfiles/zsh/02_aliases.zsh'
+alias dotopen='open -a "Visual Studio Code" ~/dotfiles/zsh/'   # open zsh
 alias ocot='open -a "CotEditor" '                                 # open
 alias oij='open -a "IntelliJ IDEA Ultimate" '                     # open
 alias ovi='open -a "Visual Studio Code" '                         # open
@@ -35,6 +38,10 @@ alias gic='git checkout -'
 alias gbra='git checkout -b'
 alias po='_git_push_fzf'                                          # 現在のブランチをoriginにpushする
 alias gro='_git_remote_open'                                      # remoteに設定されているURLを開く
+alias gst='git status'
+alias gcl='git clone'
+alias gmerge='git merge develop'
+
 # git checkout branchをfzfで選択
 alias gche='git checkout $(git branch -a | tr -d " " |fzf --height 100% --prompt "CHECKOUT BRANCH>" --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")'
 # 全てのファイルをgit checkout
