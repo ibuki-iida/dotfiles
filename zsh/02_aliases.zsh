@@ -2,6 +2,17 @@
 #             alias             #
 # ==============================#
 
+# 移動
+alias cdot='cd ~/dotfiles'                                         # dotfilesに移動
+alias cdoz='cd ~/dotfiles/zsh'                                    # dotfiles/zshに移動
+
+alias cdpj='cd ~/AndroidStudioProjects/PJ/medicolle'
+alias cdasp='cd ~/AndroidStudioProjects'
+alias aspt='cd ~/AndroidStudioProjects/TrialAndError'
+alias aspb='cd ~/AndroidStudioProjects/Book_sample'
+alias aspl='cd ~/AndroidStudioProjects/Learn'
+alias asps='cd ~/AndroidStudioProjects/Sample'
+
 alias ls="gls --color=auto"
 alias eman='env LANG=C man'
 alias man='env LANG=ja_JP.UTF-8 man'
@@ -11,9 +22,8 @@ alias relo="exec $SHELL -l"
 alias c='powered_cd'                                              # c でディレクトリ履歴から検索
 alias nc='npm ci'                                                 # pj依存
 alias ndev='npm run dev'                                          # pj依存
-alias dot='cd ~/dotfiles'                                         # dotfilesに移動
-alias dotz='cd ~/dotfiles/zsh'                                    # dotfiles/zshに移動
 alias alist='cat ~/dotfiles/zsh/02_aliases.zsh'                    # aliasを表示
+alias alivi='vi ~/dotfiles/zsh/02_aliases.zsh'						# aliasを編集
 alias funlist='cat ~/dotfiles/zsh/04_function.zsh'                    # funcを表示
 alias myfunlist='cat ~/dotfiles/zsh/05_Myfunction.zsh'                    # Myfuncを表示
 alias alivi='vi  ~/dotfiles/zsh/02_aliases.zsh'
@@ -32,15 +42,20 @@ alias sr='source ~/.zshrc'                                        # zshrc更新
 alias blue='bluetooth-fzf.sh'
 alias memo='_writeArticle'
 alias mvmemo='_movePostedArticles'
+
 # git
-alias gpull='git pull origin develop'
+
+alias gipull='git pull origin develop'
+alias gdev='git checkout develop'
 alias gic='git checkout -'
-alias gbra='git checkout -b'
+alias gicb='git checkout -b'
+alias gicm='(){git checkout -b feature/012-$1/main}'
 alias po='_git_push_fzf'                                          # 現在のブランチをoriginにpushする
 alias gro='_git_remote_open'                                      # remoteに設定されているURLを開く
 alias gst='git status'
 alias gcl='git clone'
-alias gmerge='git merge develop'
+alias gdevme='git merge develop'
+alias gbra='git branch'
 
 # git checkout branchをfzfで選択
 alias gche='git checkout $(git branch -a | tr -d " " |fzf --height 100% --prompt "CHECKOUT BRANCH>" --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")'

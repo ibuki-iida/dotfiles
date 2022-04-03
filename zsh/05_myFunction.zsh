@@ -5,13 +5,17 @@
 # ---------------------------------------------------------
 # plugin list
 # ---------------------------------------------------------
-function gautop() {
-    pwd
-    git checkout develop
-    git pull origin develop
-    git checkout -
-    git merge develop
-    pwd
+function gitmake() {
+    gdev;
+    gipull;S
+    gicm;
+}
+
+function gdevpull() {
+	gdev;
+	gipull;
+	gic;
+	gdevme;
 }
 
 function dcotall() {
