@@ -19,15 +19,21 @@ alias ovi='open -a "Visual Studio Code" '             # open
 # ---------------------------------------------------------
 # Git
 # ---------------------------------------------------------
-alias gipull='git pull origin develop'
-alias gdev='git checkout develop'
-alias gic='git checkout -'
-alias gicb='git checkout -b'
 alias gicm='(){git checkout -b feature/012-$1/main}'
+alias gipull='git pull origin develop'                #
+alias gicd='git checkout develop'                     #
+alias gic='git checkout -'                            #
+alias gicb='git checkout -b'                          #
 alias gst='git status'
-alias gcl='git clone'
+alias gclo='git clone'
 alias gdevme='git merge develop'
 alias gbra='git branch'
+alias gbraa='git branch -a -vv'                       # 追跡ブランチ含め表示。-vv：コミットタイトル
+alias gkara='git checkout --orphan '                  # 履歴無しブランチ作成 git rm -rf .
+alias glog='log --graph --date=short --pretty'        # カレントブランチログ
+alias gloga='log --oneline --decorate --graph --branches --tags --remotes'  # 全ブランチログ
+alias wipe='git checkout . && git clean -fd'          # indexにaddしていないファイルを全てなかった事に
+alias gstash='stash save -u'                          # 未追跡ファイルも一緒にstash。-a ignoredファイルも
 
 # -外部から---------------------------------------------------
 alias po='_git_push_fzf'                              # 現在のブランチをoriginにpushする
@@ -45,7 +51,7 @@ alias cde='_easy_change_dir'                          #./以下移動
 alias lk='_look'                                      # カレントディレクトリ以下をプレビューし選択して開く
 alias lkk='_look_all'                                 #
 alias cdf='_cd_opend_finder'                          # 現在開いているfinderのディレクトリに移動                                      #
-
+alias rmf='rm -fr'
 # ---------------------------------------------------------
 # プロジェクト関連
 # ---------------------------------------------------------
