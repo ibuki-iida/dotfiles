@@ -1,3 +1,5 @@
+https://yuu.1000quu.com/git_alias_and_zsh_setting
+
 git config --global alias.st status
 git config --global alias.co checkout
 git config --global alias.br branch

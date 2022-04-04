@@ -1,9 +1,18 @@
-#!/bin/bash
+#!/bin/zsh
 # 配置したい設定ファイル
 dotfiles=(.zshrc .tmux.conf)
 
-# .zshrc と .tmux.conf という設定ファイルのシンボリックリンクを
-# ホームディレクトリ直下に作成する
+# シンボリックリンクをホームディレクトリ直下に作成する
 for file in "${dotfiles[@]}"; do
-        ln -svf $file ~/
+    ln -svf $file ~/
+done
+
+--------------------------------------------
+
+dotfiles_root=$(cd $(dirname $0)/.. && pwd)
+
+# dotfilesディレクトリの中身のリンクをホームディレクトリ直下に作成
+cd ${dotfiles_root}/dotfiles
+for file in .*; do
+    ln -s ${PWD}/${file} ${HOME}
 done
