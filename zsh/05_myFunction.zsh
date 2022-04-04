@@ -6,13 +6,13 @@
 # plugin list
 # ---------------------------------------------------------
 function gitmake() {
-    gdev;
-    gipull;S
+    gicd;
+    gipull;
     gicm;
 }
 
 function gdevpull() {
-	gdev;
+	gicd;
 	gipull;
 	gic;
 	gdevme;
@@ -39,6 +39,12 @@ function runadmin() {
 	make test data
 }
 
+function grev(){
+  local PRNUM=$1
+  gicb;
+  git fetch origin pull/${PRNUM}/head:PR-${PRNUM};
+  git checkout PR-${PRNUM};
+}
 
 
 
