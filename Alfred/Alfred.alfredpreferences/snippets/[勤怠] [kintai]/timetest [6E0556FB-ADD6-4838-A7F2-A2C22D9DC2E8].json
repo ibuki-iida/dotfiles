@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "{date}\n{date:full}\n{date:long}\n{date:medium}\n{date:short}\n{datetime -1d}\n{datetime +1d}\n{date +1d}\n{date+1d:medium}",
+    "uid" : "6E0556FB-ADD6-4838-A7F2-A2C22D9DC2E8",
+    "name" : "timetest",
+    "keyword" : ";time"
+  }
+}

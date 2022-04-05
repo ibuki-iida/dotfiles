@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "export ={cursor}\nexport PATH=$PATH:$\n",
+    "uid" : "34C4EAFD-2BF8-45AD-B80F-77C04E5A763F",
+    "name" : "export",
+    "keyword" : ";exe"
+  }
+}

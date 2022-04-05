@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "brew install '{clipboard}'",
+    "uid" : "32C420FA-8C31-4A69-936E-56799D43B10F",
+    "name" : "brew install",
+    "keyword" : "brec"
+  }
+}

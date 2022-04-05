@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "brew {cursor} uninstall",
+    "uid" : "56A4D1A0-7C0A-43AE-B99F-60A4B7705ADE",
+    "name" : "brew uninstall",
+    "keyword" : "breun"
+  }
+}
