@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="89702b14-3504-40d5-b9cc-66cdcea91c81" name="変更" comment="">
+    <list default="true" id="e5a867bd-50c3-46ad-a334-850e78356b5d" name="変更" comment="">
+      <change beforePath="$PROJECT_DIR$/.bash_profile.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/chrome_history.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/chrome_tab_activate.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/iterm_background_color.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/iterm_multi_ssh.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/iterm_transparency.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/sequelpro_auto_input.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/advent-calender-scripts/sequelpro_auto_select.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zsh/02_aliases.zsh" beforeDir="false" afterPath="$PROJECT_DIR$/zsh/02_aliases.zsh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -9,36 +22,71 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="25SiwpmGH43t1mWYb4wRKDAeDoe" />
+  <component name="ProjectId" id="27HCG5mGuKym5PzfAJP7ETupD8B" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "ruby.rails.projectView.checked": "true",
+    "settings.editor.selected.configurable": "preferences.customizations",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/zsh" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="アプリケーションレベル" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="デフォルトタスク">
-      <changelist id="89702b14-3504-40d5-b9cc-66cdcea91c81" name="変更" comment="" />
-      <created>1645527133920</created>
+      <changelist id="e5a867bd-50c3-46ad-a334-850e78356b5d" name="変更" comment="" />
+      <created>1648967527759</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1645527133920</updated>
-      <workItem from="1645527135438" duration="28000" />
+      <updated>1648967527759</updated>
+      <workItem from="1648967530389" duration="6642000" />
+      <workItem from="1648989129201" duration="1199000" />
+      <workItem from="1648990343360" duration="15474000" />
+      <workItem from="1650261754448" duration="287000" />
+      <workItem from="1650262063325" duration="1352000" />
+      <workItem from="1650263440144" duration="465000" />
+      <workItem from="1650263918862" duration="1260000" />
+      <workItem from="1650440084412" duration="1251000" />
+      <workItem from="1650521083984" duration="598000" />
+      <workItem from="1650525308366" duration="30000" />
+      <workItem from="1650526017828" duration="1176000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

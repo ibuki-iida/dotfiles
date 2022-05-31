@@ -11,11 +11,11 @@ function gitmake() {
     gicm;
 }
 
-function gdevpull() {
+function gidevpull() {
 	gicd;
 	gipull;
-	gic;
-	gdevme;
+	gicc;
+	gideme;
 }
 
 function dcotall() {
@@ -27,17 +27,13 @@ function dcotall() {
     cot ~/dotfiles/zsh/05_Myfunction.zsh
 }
 
-function runadmin() {
-	cd /Users/ibuki/AndroidStudioProjects/PJ/medicolle/management
-	echo "run server"
-	meke run server
-	echo "run server admin"
-	make run server admin
-	echo "firebase emulators:start"
-	firebase emulators:start
-	echo ""
-	make test data
+function killbra() {
+	local KILLBRANCH=`git rev-parse --abbrev-ref HEAD`
+	gicd
+	git branch -d $KILLBRANCH
+	git branch
 }
+
 
 function grev(){
   local PRNUM=$1
@@ -46,7 +42,11 @@ function grev(){
   git checkout PR-${PRNUM};
 }
 
-
+function twdmp(){
+	local USID=$1
+	alltweets ${USID} > /Users/ibuki/sfiles/twidmp/${USID}_$(date +"%Y%m%d").json
+	cd /Users/ibuki/sfiles/twidmp/
+}
 
 # ---------------------------------------------------------
 # OTHERS
