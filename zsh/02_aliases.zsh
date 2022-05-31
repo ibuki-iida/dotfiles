@@ -22,19 +22,28 @@ alias ovi='open -a "Visual Studio Code" '             # open
 alias gicm='(){git checkout -b feature/012-$1/main}'
 alias gipull='git pull origin develop'                #
 alias gicd='git checkout develop'                     #
-alias gic='git checkout -'                            #
+alias gic='git checkout'                          	  #
+alias gicc='git checkout -'                           #
 alias gicb='git checkout -b'                          #
 alias gst='git status'
-alias gclo='git clone'
-alias gdevme='git merge develop'
+alias giclo='git clone'
+alias gimede='git merge develop'
 alias gbra='git branch'
 alias gbraa='git branch -a -vv'                       # 追跡ブランチ含め表示。-vv：コミットタイトル
 alias gkara='git checkout --orphan '                  # 履歴無しブランチ作成 git rm -rf .
-alias glog='log --graph --date=short --pretty'        # カレントブランチログ
-alias gloga='log --oneline --decorate --graph --branches --tags --remotes'  # 全ブランチログ
+alias glog='git log --graph --date=short --pretty'        # カレントブランチログ
+alias gloga='git log --oneline --decorate --graph --branches --tags --remotes'  # 全ブランチログ
 alias wipe='git checkout . && git clean -fd'          # indexにaddしていないファイルを全てなかった事に
-alias gstash='stash save -u'                          # 未追跡ファイルも一緒にstash。-a ignoredファイルも
-
+alias gstash='git stash save -u'                          # 未追跡ファイルも一緒にstash。-a ignoredファイルも
+alias ggis='gh issue status'
+alias ggil='gh issue list'
+alias ggiv='gh issue view'
+alias ggpst='gh pr status'
+alias ggpl='gh pr list'
+alias ggpv='gh pr view'
+alias ggwe='gh browse' # -s Open repository settings   -w, --wiki
+alias ggdif='gh pr diff'
+alias ggdiff='gh pr diff --patch'
 # -外部から---------------------------------------------------
 alias po='_git_push_fzf'                              # 現在のブランチをoriginにpushする
 alias gro='_git_remote_open'                          # remoteに設定されているURLを開く
@@ -55,9 +64,10 @@ alias rmf='rm -fr'
 # ---------------------------------------------------------
 # プロジェクト関連
 # ---------------------------------------------------------
-alias cdpj='cd ~/AndroidStudioProjects/PJ/medicolle'
+alias cdpj='cd ~/AndroidStudioProjects/PJ/dentsudigital-boy'
 alias nc='npm ci'                                     # pj依存
 alias ndev='npm run dev'                              # pj依存
+alias ndevs='npm run dev:auth-skip'
 
 # ---------------------------------------------------------
 # ShellCommand短縮
@@ -67,6 +77,7 @@ alias man='env LANG=ja_JP.UTF-8 man'
 alias mod='chmod 755'                                  # 実行権限付与
 alias wi='which -a'                                    # which 複数表示
 alias sr='source ~/.zshrc'                             # zshrc更新
+alias cr='clear'
 
 # ---------------------------------------------------------
 # dotfiles関連
@@ -76,11 +87,12 @@ alias alivi='vi ~/dotfiles/zsh/02_aliases.zsh'         # aliasを編集
 alias funlist='cat ~/dotfiles/zsh/04_function.zsh'     # funcを表示
 alias myfunlist='cat ~/dotfiles/zsh/05_Myfunction.zsh' # Myfuncを表示
 alias alivi='vi  ~/dotfiles/zsh/02_aliases.zsh'
-
+alias cmmemo='cat ~/dotfiles/showCommandMemos/show_shell_command_memo.md'
+alias gimemo='cat ~/dotfiles/showCommandMemos/gitMemo.txt'
 # ---------------------------------------------------------
 # 外部から
 # ---------------------------------------------------------
-alias ssh='~/bin/ssh-change-profile.sh'
+# alias ssh='~/bin/ssh-change-profile.sh'
 alias ff='find . | fzf'
 alias relo="exec $SHELL -l"
 alias c='powered_cd'                                   # c でディレクトリ履歴から検索
