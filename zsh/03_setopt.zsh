@@ -5,6 +5,8 @@
 # ---------------------------------------------------------
 # setopt
 # ---------------------------------------------------------
+setopt inc_append_history   # 実行時に履歴をファイルにに追加していく
+setopt share_history        # 履歴を他のシェルとリアルタイム共有する
 setopt auto_cd					# パスを直接入力してもcdする
 setopt AUTO_PARAM_KEYS			# 環境変数を補完
 setopt no_flow_control			# disable ctrl+s, ctrl+q
@@ -26,22 +28,35 @@ setopt no_beep					# ビープ音を消す
 # ---------------------------------------------------------
 # zinit
 # ---------------------------------------------------------
+# enable completion# コマンド補完
+autoload -Uz compinit && compinit
+
+# 補完候補をそのまま探す -> 小文字を大文字に変えて探す -> 大文字を小文字に変えて探す
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+
+# 補完方法毎にグループ化する。
+zstyle ':completion:*' format '%B%F{blue}%d%f%b'
+zstyle ':completion:*' group-name ''
+
+# 補完侯補をメニューから選択する。
+# select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
+zstyle ':completion:*:default' menu select=2
 
 # cdrの設定
-# autoload -Uz is-at-least
-# if is-at-least 4.3.11
-# then
-#   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-#   add-zsh-hook chpwd chpwd_recent_dirs
-#   zstyle ':chpwd:*'    recent-dirs-max 500
-#   zstyle ':chpwd:*'    recent-dirs-default yes
-#   zstyle ':chpwd:*'    recent-dirs-file "$HOME/.cache/cdr/history"
-#   zstyle ':completion:*' recent-dirs-insert both
-# fi
+autoload -Uz is-at-least
+if is-at-least 4.3.11
+then
+  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':chpwd:*'    recent-dirs-max 500
+  zstyle ':chpwd:*'    recent-dirs-default yes
+  zstyle ':chpwd:*'    recent-dirs-file "$HOME/.cache/cdr/history"
+  zstyle ':completion:*' recent-dirs-insert both
+fi
 
 # コマンドを途中まで入力後、historyから絞り込み
-# autoload -Uz history-search-end
-# zle -N history-beginning-search-backward-end history-search-end
-# zle -N history-beginning-search-forward-end history-search-end
-# bindkey "^P" history-beginning-search-backward-end
-# bindkey "^N" history-beginning-search-forward-end
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
