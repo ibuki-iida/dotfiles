@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "{cursor}\n直前で申し訳ありません。\n{date+1d:medium} は私用のため、終日有休とさせてください\nPJ確認済みです。",
-    "uid" : "FB0D26D5-A9F4-4362-AE88-3107AECB4BED",
-    "name" : "[pj]直前有給",
-    "keyword" : ";pasi"
-  }
-}

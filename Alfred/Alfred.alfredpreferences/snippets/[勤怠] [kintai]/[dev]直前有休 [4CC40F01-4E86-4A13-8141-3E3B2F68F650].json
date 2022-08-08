@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "@mgmt-team\n直前で申し訳ありません。\n{date+1d:medium} は私用のため、終日有休とさせてください\nPJ確認済みです。",
-    "uid" : "4CC40F01-4E86-4A13-8141-3E3B2F68F650",
-    "name" : "[dev]直前有休",
-    "keyword" : ";dasi"
-  }
-}
