@@ -96,3 +96,8 @@ source $SCRIPT_DIR/zsh/05_Myfunction.zsh
 
 source $SCRIPT_DIR/zsh/p10k.zsh
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/ibuki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ibuki/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/ibuki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ibuki/google-cloud-sdk/completion.zsh.inc'; fi

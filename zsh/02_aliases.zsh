@@ -72,13 +72,14 @@ alias ndevs='npm run dev:auth-skip'
 # ---------------------------------------------------------
 # ShellCommand短縮
 # ---------------------------------------------------------
-alias ls="gls --color=auto"
+alias ls='ls --color=auto'
+alias als='ls -la'
 alias man='env LANG=ja_JP.UTF-8 man'
 alias mod='chmod 755'                                  # 実行権限付与
 alias wi='which -a'                                    # which 複数表示
 alias sr='source ~/.zshrc'                             # zshrc更新
 alias cr='clear'
-
+alias epath='echo $PATH | tr '\'':'\'' '\''\n'\'''
 # ---------------------------------------------------------
 # dotfiles関連
 # ---------------------------------------------------------
@@ -94,7 +95,7 @@ alias gimemo='cat ~/dotfiles/showCommandMemos/gitMemo.txt'
 # ---------------------------------------------------------
 # alias ssh='~/bin/ssh-change-profile.sh'
 alias ff='find . | fzf'
-alias relo="exec $SHELL -l"
+alias relo='exec $SHELL -l'
 alias c='powered_cd'                                   # c でディレクトリ履歴から検索
 alias eman='env LANG=C man'
 
