@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-
+echo $PATH | tr ':' '\n'
+mysql.server  {start|stop|restart|reload|force-reload|status}
 echo "-----------------------------------------"
 echo "Home brew"
 echo "-----------------------------------------"
